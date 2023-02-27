@@ -1,7 +1,7 @@
 package com.waterfogsw.timedeal.adapter.`in`.web
 
 import com.waterfogsw.timedeal.adapter.`in`.web.dto.MemberJoinRequest
-import com.waterfogsw.timedeal.application.port.MemberJoinCommand
+import com.waterfogsw.timedeal.application.port.`in`.MemberJoinCommand
 import org.springframework.web.bind.annotation.*
 
 @RestController

@@ -1,4 +1,4 @@
-package com.waterfogsw.timedeal.application.port
+package com.waterfogsw.timedeal.application.port.`in`
 
 import com.waterfogsw.timedeal.adapter.`in`.web.dto.MemberJoinRequest
 

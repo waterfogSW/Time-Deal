@@ -3,7 +3,7 @@ package com.waterfogsw.timedeal.adapter.`in`.web
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.ninjasquad.springmockk.MockkBean
 import com.waterfogsw.timedeal.adapter.`in`.web.dto.MemberJoinRequest
-import com.waterfogsw.timedeal.application.port.MemberJoinCommand
+import com.waterfogsw.timedeal.application.port.`in`.MemberJoinCommand
 import com.waterfogsw.timedeal.util.restDocMockMvcBuild
 import io.kotest.core.annotation.DisplayName
 import io.kotest.core.spec.style.DescribeSpec
