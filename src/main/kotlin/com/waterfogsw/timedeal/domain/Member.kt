@@ -1,7 +1,7 @@
 package com.waterfogsw.timedeal.domain
 
 data class Member(
-  val id: Long? = null,
+  val id: String? = null,
   val username: String,
   val password: String,
 )

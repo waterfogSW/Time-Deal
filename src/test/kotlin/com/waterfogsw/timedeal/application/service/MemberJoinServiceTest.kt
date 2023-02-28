@@ -21,7 +21,7 @@ class MemberJoinServiceTest : DescribeSpec({
       val memberJoinRequest = MemberJoinRequest(username = "johndoe", password = "password")
 
       it("새로운 회원을 생성한다") {
-        val member = Member(1L, memberJoinRequest.username, memberJoinRequest.password)
+        val member = Member("0x000", memberJoinRequest.username, memberJoinRequest.password)
         every { memberCreatePort.create(any()) } returns member
 
         memberJoinService.join(memberJoinRequest)
