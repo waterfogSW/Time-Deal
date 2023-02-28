@@ -3,11 +3,11 @@ package com.waterfogsw.timedeal.adapter.out.jpa
 import com.waterfogsw.timedeal.adapter.out.jpa.mapper.MemberJpaMapper
 import com.waterfogsw.timedeal.application.port.out.*
 import com.waterfogsw.timedeal.common.exception.NotFoundException
-import com.waterfogsw.timedeal.common.layer.PersistenceAdapter
+import com.waterfogsw.timedeal.common.layer.Adapter
 import com.waterfogsw.timedeal.domain.Member
 import java.util.*
 
-@PersistenceAdapter
+@Adapter
 class MemberPersistenceAdapter(
   private val memberJpaRepository: MemberJpaRepository,
   private val memberJpaMapper: MemberJpaMapper
