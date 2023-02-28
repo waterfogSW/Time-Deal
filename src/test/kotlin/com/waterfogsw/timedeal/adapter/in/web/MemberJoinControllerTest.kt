@@ -49,7 +49,7 @@ class MemberJoinControllerTest(
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(joinRequest))
           )
-          .andExpect(status().isOk)
+          .andExpect(status().isCreated)
           .andDo(
             document(
               "join-member",
