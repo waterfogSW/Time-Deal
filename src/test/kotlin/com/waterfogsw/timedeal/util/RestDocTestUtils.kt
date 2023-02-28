@@ -9,17 +9,17 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
 
 fun restDocMockMvcBuild(
-  context: WebApplicationContext,
-  restDocumentation: RestDocumentationContextProvider
+    context: WebApplicationContext,
+    restDocumentation: RestDocumentationContextProvider,
 ): MockMvc {
-  return MockMvcBuilders
-      .webAppContextSetup(context)
-      .apply<DefaultMockMvcBuilder>(
-        MockMvcRestDocumentation
-            .documentationConfiguration(restDocumentation)
-            .operationPreprocessors()
-            .withRequestDefaults(Preprocessors.prettyPrint())
-            .withResponseDefaults(Preprocessors.prettyPrint())
-      )
-      .build()
+    return MockMvcBuilders
+        .webAppContextSetup(context)
+        .apply<DefaultMockMvcBuilder>(
+            MockMvcRestDocumentation
+                .documentationConfiguration(restDocumentation)
+                .operationPreprocessors()
+                .withRequestDefaults(Preprocessors.prettyPrint())
+                .withResponseDefaults(Preprocessors.prettyPrint()),
+        )
+        .build()
 }

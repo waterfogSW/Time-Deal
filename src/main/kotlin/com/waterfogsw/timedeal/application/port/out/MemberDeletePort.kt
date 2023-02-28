@@ -4,6 +4,5 @@ import java.util.*
 
 interface MemberDeletePort {
 
-  fun delete(id: UUID)
-
+    fun delete(id: UUID)
 }

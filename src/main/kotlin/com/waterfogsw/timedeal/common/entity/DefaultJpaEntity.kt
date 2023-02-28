@@ -14,51 +14,51 @@ import java.util.*
 @EntityListeners(AuditingEntityListener::class)
 abstract class DefaultJpaEntity : Persistable<UUID> {
 
-  @Id
-  private val id: UUID = UlidCreator
-      .getMonotonicUlid()
-      .toUuid()
+    @Id
+    private val id: UUID = UlidCreator
+        .getMonotonicUlid()
+        .toUuid()
 
-  @CreatedDate
-  @Column(nullable = false, updatable = false)
-  var createdAt: LocalDateTime? = null
-    private set
+    @CreatedDate
+    @Column(nullable = false, updatable = false)
+    var createdAt: LocalDateTime? = null
+        private set
 
-  @LastModifiedDate
-  @Column(nullable = false)
-  var updatedAt: LocalDateTime? = null
-    private set
+    @LastModifiedDate
+    @Column(nullable = false)
+    var updatedAt: LocalDateTime? = null
+        private set
 
-  @Transient
-  private var _isNew = true
+    @Transient
+    private var _isNew = true
 
-  override fun getId(): UUID = id
+    override fun getId(): UUID = id
 
-  override fun isNew(): Boolean = _isNew
+    override fun isNew(): Boolean = _isNew
 
-  override fun equals(other: Any?): Boolean {
-    return if (other == null) {
-      false
-    } else if (other !is HibernateProxy && this::class != other::class) {
-      false
-    } else id == getIdentifier(other)
-
-  }
-
-  private fun getIdentifier(obj: Any): UUID {
-    return if (obj is HibernateProxy) {
-      (obj.hibernateLazyInitializer.identifier) as UUID
-    } else {
-      (obj as DefaultJpaEntity).id
+    override fun equals(other: Any?): Boolean {
+        return if (other == null) {
+            false
+        } else if (other !is HibernateProxy && this::class != other::class) {
+            false
+        } else {
+            id == getIdentifier(other)
+        }
     }
-  }
 
-  override fun hashCode() = Objects.hashCode(id)
+    private fun getIdentifier(obj: Any): UUID {
+        return if (obj is HibernateProxy) {
+            (obj.hibernateLazyInitializer.identifier) as UUID
+        } else {
+            (obj as DefaultJpaEntity).id
+        }
+    }
 
-  @PostPersist
-  @PostLoad
-  protected fun load() {
-    _isNew = false
-  }
+    override fun hashCode() = Objects.hashCode(id)
 
+    @PostPersist
+    @PostLoad
+    protected fun load() {
+        _isNew = false
+    }
 }

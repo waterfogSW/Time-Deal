@@ -6,12 +6,11 @@ import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class MemberDeleteService (
-  private val memberDeletePort: MemberDeletePort
-): MemberDeleteCommand {
+class MemberDeleteService(
+    private val memberDeletePort: MemberDeletePort,
+) : MemberDeleteCommand {
 
-  override fun delete(id: String) {
-    memberDeletePort.delete(UUID.fromString(id))
-  }
-
+    override fun delete(id: String) {
+        memberDeletePort.delete(UUID.fromString(id))
+    }
 }

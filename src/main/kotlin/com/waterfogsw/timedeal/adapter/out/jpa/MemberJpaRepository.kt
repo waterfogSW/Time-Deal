@@ -5,6 +5,5 @@ import java.util.*
 
 interface MemberJpaRepository : JpaRepository<MemberJpaEntity, UUID> {
 
-  fun findByUsername(username: String): MemberJpaEntity?
-
+    fun findByUsername(username: String): MemberJpaEntity?
 }

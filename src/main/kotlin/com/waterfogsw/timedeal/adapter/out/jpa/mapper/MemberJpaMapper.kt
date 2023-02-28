@@ -7,17 +7,16 @@ import org.springframework.stereotype.Component
 @Component
 class MemberJpaMapper {
 
-  fun mapToDomain(memberJpaEntity: MemberJpaEntity) =
-    Member(
-      id = memberJpaEntity.id.toString(),
-      username = memberJpaEntity.username,
-      password = memberJpaEntity.password,
-    )
+    fun mapToDomain(memberJpaEntity: MemberJpaEntity) =
+        Member(
+            id = memberJpaEntity.id.toString(),
+            username = memberJpaEntity.username,
+            password = memberJpaEntity.password,
+        )
 
-  fun mapToJpaEntity(member: Member) =
-    MemberJpaEntity(
-      username = member.username,
-      password = member.password
-    )
-
+    fun mapToJpaEntity(member: Member) =
+        MemberJpaEntity(
+            username = member.username,
+            password = member.password,
+        )
 }

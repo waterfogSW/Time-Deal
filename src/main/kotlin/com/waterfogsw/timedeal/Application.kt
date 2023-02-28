@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class TimeDealApplication
 
 fun main(args: Array<String>) {
-  runApplication<TimeDealApplication>(*args)
+    runApplication<TimeDealApplication>(*args)
 }

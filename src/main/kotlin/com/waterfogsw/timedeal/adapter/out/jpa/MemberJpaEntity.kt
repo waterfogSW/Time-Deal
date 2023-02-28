@@ -6,16 +6,15 @@ import jakarta.persistence.Entity
 
 @Entity(name = "member")
 class MemberJpaEntity(
-  username: String,
-  password: String,
+    username: String,
+    password: String,
 ) : DefaultJpaEntity() {
 
-  @Column(nullable = false)
-  var username: String = username
-    private set
+    @Column(nullable = false)
+    var username: String = username
+        private set
 
-  @Column(nullable = false)
-  var password: String = password
-    private set
-
+    @Column(nullable = false)
+    var password: String = password
+        private set
 }

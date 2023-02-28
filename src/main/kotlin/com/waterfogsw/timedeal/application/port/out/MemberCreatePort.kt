@@ -4,6 +4,5 @@ import com.waterfogsw.timedeal.domain.Member
 
 interface MemberCreatePort {
 
-  fun create(member: Member): Member
-
+    fun create(member: Member): Member
 }

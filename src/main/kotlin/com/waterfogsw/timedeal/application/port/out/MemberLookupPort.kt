@@ -4,6 +4,5 @@ import com.waterfogsw.timedeal.domain.Member
 
 interface MemberLookupPort {
 
-  fun findByUsername(username: String): Member
-
+    fun findByUsername(username: String): Member
 }

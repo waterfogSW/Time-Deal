@@ -22,49 +22,47 @@ import org.springframework.web.context.WebApplicationContext
 @DisplayName("WEB - 회원 가입 API")
 @WebMvcTest(MemberJoinController::class)
 class MemberJoinControllerTest(
-  @Autowired private val context: WebApplicationContext,
-  @Autowired private val objectMapper: ObjectMapper,
-  @MockkBean private val memberJoinCommand: MemberJoinCommand
+    @Autowired private val context: WebApplicationContext,
+    @Autowired private val objectMapper: ObjectMapper,
+    @MockkBean private val memberJoinCommand: MemberJoinCommand,
 ) : DescribeSpec({
 
-  val restDocumentation = ManualRestDocumentation()
-  val mockMvc = restDocMockMvcBuild(context, restDocumentation)
+    val restDocumentation = ManualRestDocumentation()
+    val mockMvc = restDocMockMvcBuild(context, restDocumentation)
 
-  beforeEach { restDocumentation.beforeTest(javaClass, it.name.testName) }
-  afterEach { restDocumentation.afterTest() }
+    beforeEach { restDocumentation.beforeTest(javaClass, it.name.testName) }
+    afterEach { restDocumentation.afterTest() }
 
-  describe("POST /api/members") {
+    describe("POST /api/members") {
 
-    val joinRequest = MemberJoinRequest(
-      username = "johndoe",
-      password = "password"
-    )
+        val joinRequest = MemberJoinRequest(
+            username = "johndoe",
+            password = "password",
+        )
 
-    every { memberJoinCommand.join(joinRequest) } just runs
+        every { memberJoinCommand.join(joinRequest) } just runs
 
-    it("새로운 회원을 생성한다") {
-      mockMvc
-          .perform(
-            post("/api/members")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(joinRequest))
-          )
-          .andExpect(status().isCreated)
-          .andDo(
-            document(
-              "join-member",
-              requestFields(
-                fieldWithPath("username")
-                    .description("The username of the member"),
-                fieldWithPath("password")
-                    .description("The password of the member")
-              )
-            )
-          )
+        it("새로운 회원을 생성한다") {
+            mockMvc
+                .perform(
+                    post("/api/members")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(joinRequest)),
+                )
+                .andExpect(status().isCreated)
+                .andDo(
+                    document(
+                        "join-member",
+                        requestFields(
+                            fieldWithPath("username")
+                                .description("The username of the member"),
+                            fieldWithPath("password")
+                                .description("The password of the member"),
+                        ),
+                    ),
+                )
 
-      verify { memberJoinCommand.join(joinRequest) }
+            verify { memberJoinCommand.join(joinRequest) }
+        }
     }
-
-  }
-
 })

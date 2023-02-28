@@ -8,16 +8,15 @@ import org.springframework.stereotype.Service
 
 @Service
 class MemberJoinService(
-  private val memberCreatePort: MemberCreatePort,
+    private val memberCreatePort: MemberCreatePort,
 ) : MemberJoinCommand {
 
-  override fun join(memberJoinRequest: MemberJoinRequest) {
-    val member = Member(
-      username = memberJoinRequest.username,
-      password = memberJoinRequest.password
-    )
+    override fun join(memberJoinRequest: MemberJoinRequest) {
+        val member = Member(
+            username = memberJoinRequest.username,
+            password = memberJoinRequest.password,
+        )
 
-    memberCreatePort.create(member)
-  }
-
+        memberCreatePort.create(member)
+    }
 }

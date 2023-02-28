@@ -4,6 +4,5 @@ import com.waterfogsw.timedeal.adapter.`in`.web.dto.MemberJoinRequest
 
 interface MemberJoinCommand {
 
-  fun join(memberJoinRequest: MemberJoinRequest)
-
+    fun join(memberJoinRequest: MemberJoinRequest)
 }

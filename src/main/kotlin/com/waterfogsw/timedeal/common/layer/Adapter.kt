@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 @Component
 annotation class Adapter(
 
-  @get:AliasFor(annotation = Component::class)
-  val value: String = ""
-  
+    @get:AliasFor(annotation = Component::class)
+    val value: String = "",
+
 )

@@ -7,13 +7,12 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("api/members")
 class MemberDeleteController(
-  private val memberDeleteCommand: MemberDeleteCommand
+    private val memberDeleteCommand: MemberDeleteCommand,
 ) {
 
-  @DeleteMapping("{id}")
-  @ResponseStatus(HttpStatus.OK)
-  fun delete(@PathVariable id: String) {
-    memberDeleteCommand.delete(id)
-  }
-
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    fun delete(@PathVariable id: String) {
+        memberDeleteCommand.delete(id)
+    }
 }

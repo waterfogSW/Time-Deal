@@ -8,13 +8,12 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("api/members")
 class MemberJoinController(
-  private val memberJoinCommand: MemberJoinCommand
+    private val memberJoinCommand: MemberJoinCommand,
 ) {
 
-  @PostMapping
-  @ResponseStatus(HttpStatus.CREATED)
-  fun join(@RequestBody memberJoinRequest: MemberJoinRequest) {
-    memberJoinCommand.join(memberJoinRequest)
-  }
-
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    fun join(@RequestBody memberJoinRequest: MemberJoinRequest) {
+        memberJoinCommand.join(memberJoinRequest)
+    }
 }
