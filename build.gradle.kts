@@ -31,6 +31,9 @@ dependencies {
   implementation("org.jetbrains.kotlin:kotlin-reflect")
   implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
+  // ulid creator
+  implementation("com.github.f4b6a3:ulid-creator:5.1.0")
+
   // mysql
   runtimeOnly("com.mysql:mysql-connector-j")
 
