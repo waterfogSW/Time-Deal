@@ -2,7 +2,7 @@ package com.waterfogsw.timedeal.user.domain
 
 import java.io.Serializable
 
-data class UserSession(
+data class UserPrincipal(
     val id: String,
     val username: String,
     val role: User.Role,
@@ -10,9 +10,9 @@ data class UserSession(
 
     companion object {
         const val SESSION_NAME = "USER_SESSION"
-        fun from(user: User): UserSession {
+        fun from(user: User): UserPrincipal {
             requireNotNull(user.id) { "To make session, user id must not be null" }
-            return UserSession(
+            return UserPrincipal(
                 id = user.id,
                 username = user.username,
                 role = user.role,

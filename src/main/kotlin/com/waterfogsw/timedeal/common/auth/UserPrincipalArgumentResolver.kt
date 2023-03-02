@@ -1,7 +1,7 @@
 package com.waterfogsw.timedeal.common.auth
 
 import com.waterfogsw.timedeal.common.annotation.Principal
-import com.waterfogsw.timedeal.user.domain.UserSession
+import com.waterfogsw.timedeal.user.domain.UserPrincipal
 import jakarta.servlet.http.HttpSession
 import org.springframework.core.MethodParameter
 import org.springframework.web.bind.support.WebDataBinderFactory
@@ -15,7 +15,7 @@ class UserPrincipalArgumentResolver(
 
     override fun supportsParameter(parameter: MethodParameter): Boolean =
         parameter.getParameterAnnotation(Principal::class.java) != null &&
-            parameter.parameterType.isAssignableFrom(UserSession::class.java)
+            parameter.parameterType.isAssignableFrom(UserPrincipal::class.java)
 
     override fun resolveArgument(
         parameter: MethodParameter,
@@ -23,8 +23,8 @@ class UserPrincipalArgumentResolver(
         webRequest: NativeWebRequest,
         binderFactory: WebDataBinderFactory?,
     ): Any {
-        val userSession = httpSession.getAttribute(UserSession.SESSION_NAME) as UserSession
-        println(userSession)
-        return userSession
+        val userPrincipal = httpSession.getAttribute(UserPrincipal.SESSION_NAME) as UserPrincipal
+        println(userPrincipal)
+        return userPrincipal
     }
 }

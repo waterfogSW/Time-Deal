@@ -5,7 +5,7 @@ import com.ninjasquad.springmockk.MockkBean
 import com.waterfogsw.timedeal.user.adapter.`in`.web.dto.UserLoginRequest
 import com.waterfogsw.timedeal.user.application.port.`in`.UserLoginCommand
 import com.waterfogsw.timedeal.user.domain.User
-import com.waterfogsw.timedeal.user.domain.UserSession
+import com.waterfogsw.timedeal.user.domain.UserPrincipal
 import com.waterfogsw.timedeal.util.restDocMockMvcBuild
 import io.kotest.core.annotation.DisplayName
 import io.kotest.core.spec.style.DescribeSpec
@@ -43,13 +43,13 @@ class UserLoginControllerTest(
             password = "password",
         )
 
-        val userSession = UserSession(
+        val userPrincipal = UserPrincipal(
             id = "dummy-session-id",
             username = "johndoe",
             role = User.Role.USER,
         )
 
-        every { userLoginCommand.login(loginRequest) } returns userSession
+        every { userLoginCommand.login(loginRequest) } returns userPrincipal
 
         it("사용자 로그인을 처리하고 세션을 생성한다") {
             mockMvc

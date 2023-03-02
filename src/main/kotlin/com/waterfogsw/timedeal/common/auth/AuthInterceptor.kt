@@ -1,7 +1,7 @@
 package com.waterfogsw.timedeal.common.auth
 
 import com.waterfogsw.timedeal.common.annotation.Auth
-import com.waterfogsw.timedeal.user.domain.UserSession
+import com.waterfogsw.timedeal.user.domain.UserPrincipal
 import jakarta.servlet.http.*
 import org.springframework.http.HttpStatus
 import org.springframework.web.method.HandlerMethod
@@ -31,6 +31,6 @@ class AuthInterceptor(
     private fun getAuthAnnotation(handler: HandlerMethod) =
         handler.getMethodAnnotation(Auth::class.java)
 
-    private fun getUserSession(): UserSession? =
-        httpSession.getAttribute(UserSession.SESSION_NAME) as? UserSession
+    private fun getUserSession(): UserPrincipal? =
+        httpSession.getAttribute(UserPrincipal.SESSION_NAME) as? UserPrincipal
 }
