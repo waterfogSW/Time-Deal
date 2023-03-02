@@ -12,11 +12,13 @@ class UserJpaMapper {
             id = userJpaEntity.id.toString(),
             username = userJpaEntity.username,
             password = userJpaEntity.password,
+            role = userJpaEntity.role,
         )
 
     fun mapToJpaEntity(user: User) =
         UserJpaEntity(
             username = user.username,
             password = user.password,
+            role = user.role,
         )
 }
