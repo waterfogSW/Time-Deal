@@ -10,7 +10,7 @@ class UserJpaEntity(
     password: String,
 ) : DefaultJpaEntity() {
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     var username: String = username
         private set
 
