@@ -1,7 +1,7 @@
 package com.waterfogsw.timedeal.user.adapter.out.jpa
 
 import com.waterfogsw.timedeal.common.exception.NotFoundException
-import com.waterfogsw.timedeal.common.layer.Adapter
+import com.waterfogsw.timedeal.common.annotation.Adapter
 import com.waterfogsw.timedeal.user.adapter.out.jpa.mapper.UserJpaMapper
 import com.waterfogsw.timedeal.user.application.port.out.*
 import com.waterfogsw.timedeal.user.domain.User
