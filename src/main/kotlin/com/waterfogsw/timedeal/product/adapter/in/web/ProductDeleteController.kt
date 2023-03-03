@@ -5,7 +5,6 @@ import com.waterfogsw.timedeal.product.application.port.`in`.ProductDeleteComman
 import com.waterfogsw.timedeal.user.domain.User.Role.*
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import java.util.UUID
 
 @RestController
 @RequestMapping("api/products")
@@ -16,7 +15,7 @@ class ProductDeleteController(
     @Auth([ADMIN])
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    fun delete(@PathVariable id: UUID) {
+    fun delete(@PathVariable id: Long) {
         productDeleteCommand.delete(id)
     }
 }

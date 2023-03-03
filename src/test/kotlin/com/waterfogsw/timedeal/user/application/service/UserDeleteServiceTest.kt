@@ -17,7 +17,7 @@ class UserDeleteServiceTest : DescribeSpec({
 
     describe("delete(UUID)") {
         context("유효한 요청이 전달되면") {
-            val id = UUID.randomUUID()
+            val id = 1L
 
             it("해당 id값의 회원을 삭제한다") {
                 every { userDeletePort.delete(id) } just runs

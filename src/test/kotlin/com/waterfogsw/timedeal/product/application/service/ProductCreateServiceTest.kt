@@ -38,7 +38,7 @@ class ProductCreateServiceTest : DescribeSpec({
 
         it("상품을 등록한다") {
             every { productDTOMapper.mapToDomain(productCreateRequest) } returns product
-            every { productSavePort.save(product) } returns product.copy(id = UUID.randomUUID())
+            every { productSavePort.save(product) } returns product.copy(id = 1L)
 
             productCreateService.create(productCreateRequest)
 

@@ -2,11 +2,9 @@ package com.waterfogsw.timedeal.common.config
 
 import com.waterfogsw.timedeal.common.auth.AuthInterceptor
 import com.waterfogsw.timedeal.common.auth.UserPrincipalArgumentResolver
-import com.waterfogsw.timedeal.common.converter.StringToUUIDConverter
 import jakarta.servlet.http.HttpSession
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.format.FormatterRegistry
 import org.springframework.web.method.support.HandlerMethodArgumentResolver
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
@@ -22,10 +20,6 @@ class MvcConfig(
 
     override fun addArgumentResolvers(resolvers: MutableList<HandlerMethodArgumentResolver>) {
         resolvers.add(userPrincipalArgumentResolver())
-    }
-
-    override fun addFormatters(registry: FormatterRegistry) {
-        registry.addConverter(StringToUUIDConverter())
     }
 
     @Bean

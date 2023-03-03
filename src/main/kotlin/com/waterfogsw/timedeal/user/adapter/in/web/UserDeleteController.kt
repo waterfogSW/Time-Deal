@@ -13,7 +13,7 @@ class UserDeleteController(
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    fun delete(@PathVariable id: UUID) {
+    fun delete(@PathVariable id: Long) {
         userDeleteCommand.delete(id)
     }
 }

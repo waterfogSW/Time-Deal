@@ -1,10 +1,9 @@
 package com.waterfogsw.timedeal.product.domain
 
 import java.time.LocalDateTime
-import java.util.*
 
 data class Product(
-    val id: UUID? = null,
+    val id: Long? = null,
     val name: String,
     val description: String,
     val imageUrl: String,

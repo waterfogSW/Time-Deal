@@ -6,7 +6,6 @@ import com.waterfogsw.timedeal.product.application.port.`in`.ProductUpdateComman
 import com.waterfogsw.timedeal.product.application.port.out.ProductSavePort
 import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
-import java.util.*
 
 @Service
 class ProductUpdateService(
@@ -16,7 +15,7 @@ class ProductUpdateService(
 
     @Transactional
     override fun update(
-        id: UUID,
+        id: Long,
         productUpdateRequest: ProductUpdateRequest,
     ) {
         val product = productLookupPort.findById(id)

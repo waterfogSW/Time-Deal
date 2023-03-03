@@ -22,7 +22,7 @@ class UserJoinServiceTest : DescribeSpec({
             val userJoinRequest = UserJoinRequest(username = "johndoe", password = "password")
 
             it("새로운 회원을 생성한다") {
-                val user = User(UUID.randomUUID(), userJoinRequest.username, userJoinRequest.password)
+                val user = User(1L, userJoinRequest.username, userJoinRequest.password)
                 every { userSavePort.save(any()) } returns user
 
                 userJoinService.join(userJoinRequest)

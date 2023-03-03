@@ -35,11 +35,11 @@ class ProductDeleteControllerTest(
 
     describe("DELETE /api/products/{id}") {
 
-        val productId = UUID.randomUUID()
+        val productId = 1L
 
         context("관리자가 요청하면") {
 
-            val user = UserPrincipal(UUID.randomUUID(), "test", User.Role.ADMIN)
+            val user = UserPrincipal(1L, "test", User.Role.ADMIN)
             val mockHttpSession = MockHttpSession()
             mockHttpSession.setAttribute(UserPrincipal.SESSION_NAME, user)
 
@@ -67,7 +67,7 @@ class ProductDeleteControllerTest(
 
         context("사용자가 요청하면") {
 
-            val user = UserPrincipal(UUID.randomUUID(), "test", User.Role.USER)
+            val user = UserPrincipal(1L, "test", User.Role.USER)
             val mockHttpSession = MockHttpSession()
             mockHttpSession.setAttribute(UserPrincipal.SESSION_NAME, user)
 

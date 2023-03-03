@@ -21,7 +21,7 @@ class UserLoginServiceTest : DescribeSpec({
     context("유효한 사용자 정보로 로그인 요청을 보낸 경우") {
 
         val user = User(
-            id = UUID.randomUUID(),
+            id = 1L,
             username = "johndoe",
             password = "password",
         )
@@ -44,7 +44,7 @@ class UserLoginServiceTest : DescribeSpec({
     context("잘못된 비밀번호로 로그인 요청을 보낸 경우") {
 
         val user = User(
-            id = UUID.randomUUID(),
+            id = 1L,
             username = "johndoe",
             password = "password",
             role = User.Role.USER,

@@ -5,7 +5,6 @@ import com.waterfogsw.timedeal.common.exception.NotFoundException
 import com.waterfogsw.timedeal.user.adapter.out.jpa.mapper.UserJpaMapper
 import com.waterfogsw.timedeal.user.application.port.out.*
 import com.waterfogsw.timedeal.user.domain.User
-import java.util.*
 
 @Adapter
 class UserPersistenceAdapter(
@@ -19,7 +18,7 @@ class UserPersistenceAdapter(
         return userJpaMapper.mapToDomain(persistEntity)
     }
 
-    override fun delete(id: UUID) {
+    override fun delete(id: Long) {
         userJpaRepository.deleteById(id)
     }
 
