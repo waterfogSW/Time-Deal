@@ -60,7 +60,7 @@ class ProductCreateControllerTest(
                         requestFields(
                             fieldWithPath("name").description("The name of the product"),
                             fieldWithPath("description").description("The description of the product"),
-                            fieldWithPath("imageUrl").optional().description("The URL of the image of the product"),
+                            fieldWithPath("imageUrl").description("The URL of the image of the product"),
                             fieldWithPath("quantity").description("The quantity of the product"),
                             fieldWithPath("originalPrice").description("The original price of the product"),
                             fieldWithPath("sellingPrice").description("The selling price of the product"),
