@@ -1,6 +1,5 @@
 package com.waterfogsw.timedeal.user.application.service
 
-import com.github.f4b6a3.ulid.UlidCreator
 import com.waterfogsw.timedeal.user.application.port.out.UserDeletePort
 import io.kotest.core.annotation.DisplayName
 import io.kotest.core.spec.style.DescribeSpec
@@ -18,17 +17,14 @@ class UserDeleteServiceTest : DescribeSpec({
 
     describe("delete(UUID)") {
         context("유효한 요청이 전달되면") {
-            val uuid = UlidCreator
-                .getMonotonicUlid()
-                .toUuid()
-                .toString()
+            val id = UUID.randomUUID()
 
             it("해당 id값의 회원을 삭제한다") {
-                every { userDeletePort.delete(UUID.fromString(uuid)) } just runs
+                every { userDeletePort.delete(id) } just runs
 
-                userDeleteService.delete(uuid)
+                userDeleteService.delete(id)
 
-                verify { userDeletePort.delete(UUID.fromString(uuid)) }
+                verify { userDeletePort.delete(id) }
             }
         }
     }

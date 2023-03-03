@@ -12,10 +12,12 @@ import java.util.*
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener::class)
-abstract class DefaultJpaEntity : Persistable<UUID> {
+abstract class DefaultJpaEntity(
+    id: UUID?,
+) : Persistable<UUID> {
 
     @Id
-    private val id: UUID = UlidCreator
+    private val id: UUID = id ?: UlidCreator
         .getMonotonicUlid()
         .toUuid()
 

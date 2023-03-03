@@ -19,6 +19,7 @@ import org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath
 import org.springframework.restdocs.payload.PayloadDocumentation.requestFields
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.web.context.WebApplicationContext
+import java.util.UUID
 
 @DisplayName("WEB - 상품 수정 API")
 @WebMvcTest(ProductUpdateController::class)
@@ -36,7 +37,7 @@ class ProductUpdateControllerTest(
 
     describe("PUT /api/products/{id}") {
 
-        val productId = "123"
+        val productId = UUID.randomUUID()
         val productUpdateRequest = ProductUpdateRequest(
             name = "iPhone 13",
             description = "A new iPhone model from Apple",

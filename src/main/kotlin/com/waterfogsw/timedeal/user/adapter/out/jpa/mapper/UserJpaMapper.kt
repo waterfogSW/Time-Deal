@@ -9,7 +9,7 @@ class UserJpaMapper {
 
     fun mapToDomain(userJpaEntity: UserJpaEntity) =
         User(
-            id = userJpaEntity.id.toString(),
+            id = userJpaEntity.id,
             username = userJpaEntity.username,
             password = userJpaEntity.password,
             role = userJpaEntity.role,
@@ -17,6 +17,7 @@ class UserJpaMapper {
 
     fun mapToJpaEntity(user: User) =
         UserJpaEntity(
+            id = user.id,
             username = user.username,
             password = user.password,
             role = user.role,

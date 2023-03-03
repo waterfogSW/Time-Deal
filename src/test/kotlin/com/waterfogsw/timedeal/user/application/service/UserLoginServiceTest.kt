@@ -10,6 +10,7 @@ import io.mockk.every
 import io.mockk.mockk
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.assertThrows
+import java.util.*
 
 @DisplayName("Service - 로그인 기능")
 class UserLoginServiceTest : DescribeSpec({
@@ -20,7 +21,7 @@ class UserLoginServiceTest : DescribeSpec({
     context("유효한 사용자 정보로 로그인 요청을 보낸 경우") {
 
         val user = User(
-            id = "0x000",
+            id = UUID.randomUUID(),
             username = "johndoe",
             password = "password",
         )
@@ -43,7 +44,7 @@ class UserLoginServiceTest : DescribeSpec({
     context("잘못된 비밀번호로 로그인 요청을 보낸 경우") {
 
         val user = User(
-            id = "0x000",
+            id = UUID.randomUUID(),
             username = "johndoe",
             password = "password",
             role = User.Role.USER,

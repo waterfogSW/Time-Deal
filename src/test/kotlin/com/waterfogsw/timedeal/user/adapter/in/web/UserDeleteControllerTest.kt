@@ -15,6 +15,7 @@ import org.springframework.restdocs.request.RequestDocumentation.parameterWithNa
 import org.springframework.restdocs.request.RequestDocumentation.pathParameters
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.web.context.WebApplicationContext
+import java.util.UUID
 
 @DisplayName("WEB - 회원 탈퇴 API")
 @WebMvcTest(UserDeleteController::class)
@@ -30,7 +31,7 @@ class UserDeleteControllerTest(
     afterEach { restDocumentation.afterTest() }
 
     describe("DELETE /api/users/{id}") {
-        val userId = "0x000"
+        val userId = UUID.randomUUID()
 
         every { userDeleteCommand.delete(userId) } just runs
 

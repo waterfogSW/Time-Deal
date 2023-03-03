@@ -9,6 +9,7 @@ class ProductJpaMapper {
 
     fun mapToJpaEntity(product: Product) =
         ProductJpaEntity(
+            id = product.id,
             name = product.name,
             description = product.description,
             imageUrl = product.imageUrl,
@@ -19,7 +20,7 @@ class ProductJpaMapper {
 
     fun mapToDomain(productJpaEntity: ProductJpaEntity) =
         Product(
-            id = productJpaEntity.id.toString(),
+            id = productJpaEntity.id,
             name = productJpaEntity.name,
             description = productJpaEntity.description,
             imageUrl = productJpaEntity.imageUrl,

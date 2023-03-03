@@ -1,9 +1,10 @@
 package com.waterfogsw.timedeal.user.domain
 
 import java.io.Serializable
+import java.util.UUID
 
 data class UserPrincipal(
-    val id: String,
+    val id: UUID,
     val username: String,
     val role: User.Role,
 ) : Serializable {

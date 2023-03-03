@@ -7,6 +7,7 @@ import com.waterfogsw.timedeal.product.domain.Product
 import io.kotest.core.annotation.DisplayName
 import io.kotest.core.spec.style.DescribeSpec
 import io.mockk.*
+import java.util.*
 
 @DisplayName("Service - 상품 등록 기능")
 class ProductCreateServiceTest : DescribeSpec({
@@ -37,7 +38,7 @@ class ProductCreateServiceTest : DescribeSpec({
 
         it("상품을 등록한다") {
             every { productDTOMapper.mapToDomain(productCreateRequest) } returns product
-            every { productCreatePort.create(product) } returns product.copy(id = "0x000")
+            every { productCreatePort.create(product) } returns product.copy(id = UUID.randomUUID())
 
             productCreateService.create(productCreateRequest)
 

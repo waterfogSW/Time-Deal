@@ -18,6 +18,7 @@ import org.springframework.restdocs.request.RequestDocumentation.parameterWithNa
 import org.springframework.restdocs.request.RequestDocumentation.pathParameters
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.web.context.WebApplicationContext
+import java.util.*
 
 @DisplayName("WEB - 상품 삭제 API")
 @WebMvcTest(ProductDeleteController::class)
@@ -34,11 +35,11 @@ class ProductDeleteControllerTest(
 
     describe("DELETE /api/products/{id}") {
 
-        val productId = "12345"
+        val productId = UUID.randomUUID()
 
         context("관리자가 요청하면") {
 
-            val user = UserPrincipal("0x00", "test", User.Role.ADMIN)
+            val user = UserPrincipal(UUID.randomUUID(), "test", User.Role.ADMIN)
             val mockHttpSession = MockHttpSession()
             mockHttpSession.setAttribute(UserPrincipal.SESSION_NAME, user)
 
@@ -66,7 +67,7 @@ class ProductDeleteControllerTest(
 
         context("사용자가 요청하면") {
 
-            val user = UserPrincipal("0x00", "test", User.Role.USER)
+            val user = UserPrincipal(UUID.randomUUID(), "test", User.Role.USER)
             val mockHttpSession = MockHttpSession()
             mockHttpSession.setAttribute(UserPrincipal.SESSION_NAME, user)
 

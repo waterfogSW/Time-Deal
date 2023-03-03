@@ -21,6 +21,7 @@ import org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath
 import org.springframework.restdocs.payload.PayloadDocumentation.requestFields
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.web.context.WebApplicationContext
+import java.util.UUID
 
 @DisplayName("WEB - 로그인 API")
 @WebMvcTest(UserLoginController::class)
@@ -44,7 +45,7 @@ class UserLoginControllerTest(
         )
 
         val userPrincipal = UserPrincipal(
-            id = "dummy-session-id",
+            id = UUID.randomUUID(),
             username = "johndoe",
             role = User.Role.USER,
         )

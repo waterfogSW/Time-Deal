@@ -21,6 +21,7 @@ import org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath
 import org.springframework.restdocs.payload.PayloadDocumentation.requestFields
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.web.context.WebApplicationContext
+import java.util.*
 
 @DisplayName("WEB - 상품 등록 API")
 @WebMvcTest(ProductCreateController::class)
@@ -40,7 +41,7 @@ class ProductCreateControllerTest(
 
         context("관리자가 요청하면") {
 
-            val user = UserPrincipal("0x00", "test", User.Role.ADMIN)
+            val user = UserPrincipal(UUID.randomUUID(), "test", User.Role.ADMIN)
             val mockHttpSession = MockHttpSession()
             mockHttpSession.setAttribute(UserPrincipal.SESSION_NAME, user)
 
@@ -84,7 +85,7 @@ class ProductCreateControllerTest(
 
         context("사용자가 요청하면") {
 
-            val user = UserPrincipal("0x00", "test", User.Role.USER)
+            val user = UserPrincipal(UUID.randomUUID(), "test", User.Role.USER)
             val mockHttpSession = MockHttpSession()
             mockHttpSession.setAttribute(UserPrincipal.SESSION_NAME, user)
 

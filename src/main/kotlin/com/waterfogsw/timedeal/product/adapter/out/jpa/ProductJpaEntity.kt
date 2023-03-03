@@ -3,16 +3,18 @@ package com.waterfogsw.timedeal.product.adapter.out.jpa
 import com.waterfogsw.timedeal.common.entity.DefaultJpaEntity
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
+import java.util.UUID
 
 @Entity(name = "product")
 class ProductJpaEntity(
+    id: UUID?,
     name: String,
     description: String,
     imageUrl: String,
     quantity: Long,
     originalPrice: Long,
     sellingPrice: Long,
-) : DefaultJpaEntity() {
+) : DefaultJpaEntity(id) {
 
     @Column(nullable = false)
     var name: String = name

@@ -10,7 +10,7 @@ class UserDeleteService(
     private val userDeletePort: UserDeletePort,
 ) : UserDeleteCommand {
 
-    override fun delete(id: String) {
-        userDeletePort.delete(UUID.fromString(id))
+    override fun delete(id: UUID) {
+        userDeletePort.delete(id)
     }
 }
