@@ -2,7 +2,7 @@ package com.waterfogsw.timedeal.user.application.port.out
 
 import com.waterfogsw.timedeal.user.domain.User
 
-interface UserCreatePort {
+interface UserSavePort {
 
-    fun create(user: User): User
+    fun save(user: User): User
 }

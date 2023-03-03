@@ -1,7 +1,7 @@
 package com.waterfogsw.timedeal.product.application.service
 
 import com.waterfogsw.timedeal.product.adapter.`in`.web.dto.ProductCreateRequest
-import com.waterfogsw.timedeal.product.application.port.out.ProductCreatePort
+import com.waterfogsw.timedeal.product.application.port.out.ProductSavePort
 import com.waterfogsw.timedeal.product.application.service.mapper.ProductDTOMapper
 import com.waterfogsw.timedeal.product.domain.Product
 import io.kotest.core.annotation.DisplayName
@@ -13,8 +13,8 @@ import java.util.*
 class ProductCreateServiceTest : DescribeSpec({
 
     val productDTOMapper = mockk<ProductDTOMapper>()
-    val productCreatePort = mockk<ProductCreatePort>()
-    val productCreateService = ProductCreateService(productDTOMapper, productCreatePort)
+    val productSavePort = mockk<ProductSavePort>()
+    val productCreateService = ProductCreateService(productDTOMapper, productSavePort)
 
     describe("create(productCreateRequest)") {
 
@@ -38,12 +38,12 @@ class ProductCreateServiceTest : DescribeSpec({
 
         it("상품을 등록한다") {
             every { productDTOMapper.mapToDomain(productCreateRequest) } returns product
-            every { productCreatePort.create(product) } returns product.copy(id = UUID.randomUUID())
+            every { productSavePort.save(product) } returns product.copy(id = UUID.randomUUID())
 
             productCreateService.create(productCreateRequest)
 
             verify { productDTOMapper.mapToDomain(productCreateRequest) }
-            verify { productCreatePort.create(product) }
+            verify { productSavePort.save(product) }
         }
     }
 })

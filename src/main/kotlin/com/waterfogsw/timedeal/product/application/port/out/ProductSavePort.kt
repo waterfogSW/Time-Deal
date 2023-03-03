@@ -2,7 +2,7 @@ package com.waterfogsw.timedeal.product.application.port.out
 
 import com.waterfogsw.timedeal.product.domain.Product
 
-interface ProductCreatePort {
+interface ProductSavePort {
 
-    fun create(product: Product): Product
+    fun save(product: Product): Product
 }
