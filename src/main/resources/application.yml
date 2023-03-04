@@ -1,13 +1,18 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
     show-sql: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/time_deal
     username: root
     password: 1234
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:scripts/local/data.sql
+      schema-locations: classpath:scripts/local/schema.sql
   data:
     redis:
       host: localhost
