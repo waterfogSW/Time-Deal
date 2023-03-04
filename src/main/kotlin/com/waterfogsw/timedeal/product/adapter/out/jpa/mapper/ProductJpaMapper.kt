@@ -27,5 +27,7 @@ class ProductJpaMapper {
             quantity = productJpaEntity.quantity,
             originalPrice = productJpaEntity.originalPrice,
             sellingPrice = productJpaEntity.sellingPrice,
+            createdAt = productJpaEntity.createdAt,
+            updatedAt = productJpaEntity.updatedAt,
         )
 }
