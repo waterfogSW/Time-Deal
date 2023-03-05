@@ -32,4 +32,13 @@ class ProductPersistenceAdapter(
             .map { productJpaMapper.mapToDomain(it) }
             .orElseThrow { NotFoundException("Product(id = $id) not found") }
     }
+
+    override fun findBySlice(
+        id: Long,
+        size: Long,
+    ): List<Product> {
+        return productJpaRepository
+            .findBySlice(id, size)
+            .map { productJpaMapper.mapToDomain(it) }
+    }
 }
