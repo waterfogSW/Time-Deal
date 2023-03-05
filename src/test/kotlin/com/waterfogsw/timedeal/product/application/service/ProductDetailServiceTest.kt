@@ -29,6 +29,9 @@ class ProductDetailServiceTest : DescribeSpec({
             sellingPrice = 1200000,
             createdAt = LocalDateTime.now(),
             updatedAt = LocalDateTime.now(),
+            dealEndTime = LocalDateTime
+                .now()
+                .plusDays(1),
         )
         val productDetailResponse = ProductDetailResponse(
             id = productId,
@@ -40,6 +43,9 @@ class ProductDetailServiceTest : DescribeSpec({
             sellingPrice = 1200000,
             createdAt = LocalDateTime.now(),
             updatedAt = LocalDateTime.now(),
+            dealEndTime = LocalDateTime
+                .now()
+                .plusDays(1),
         )
 
         every { productLookupPort.findById(productId) } returns product

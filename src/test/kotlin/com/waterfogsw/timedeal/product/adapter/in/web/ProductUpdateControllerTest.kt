@@ -19,6 +19,7 @@ import org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath
 import org.springframework.restdocs.payload.PayloadDocumentation.requestFields
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.web.context.WebApplicationContext
+import java.time.LocalDateTime
 
 @DisplayName("WEB - 상품 수정 API")
 @WebMvcTest(ProductUpdateController::class)
@@ -44,6 +45,9 @@ class ProductUpdateControllerTest(
             quantity = 10,
             originalPrice = 1000000,
             sellingPrice = 1200000,
+            dealEndTime = LocalDateTime
+                .now()
+                .plusDays(1),
         )
 
         context("상품이 존재하면") {
@@ -68,6 +72,7 @@ class ProductUpdateControllerTest(
                                 fieldWithPath("quantity").description("The quantity of the product"),
                                 fieldWithPath("originalPrice").description("The original price of the product"),
                                 fieldWithPath("sellingPrice").description("The selling price of the product"),
+                                fieldWithPath("dealEndTime").description("The end time of product dealing"),
                             ),
                         ),
                     )

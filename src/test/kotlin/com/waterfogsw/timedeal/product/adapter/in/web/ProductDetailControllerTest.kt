@@ -45,8 +45,11 @@ class ProductDetailControllerTest(
             quantity = 10,
             originalPrice = 1000000,
             sellingPrice = 1200000,
-            createdAt = LocalDateTime.of(2022, 1, 1, 0, 0, 0),
-            updatedAt = LocalDateTime.of(2022, 1, 1, 0, 0, 0),
+            createdAt = LocalDateTime.now(),
+            updatedAt = LocalDateTime.now(),
+            dealEndTime = LocalDateTime
+                .now()
+                .plusDays(1),
         )
 
         every { productDetailCommand.detail(productId) } returns productDetailResponse
@@ -74,6 +77,7 @@ class ProductDetailControllerTest(
                             fieldWithPath("sellingPrice").description("The selling price of the product"),
                             fieldWithPath("createdAt").description("The date and time the product was created"),
                             fieldWithPath("updatedAt").description("The date and time the product was last updated"),
+                            fieldWithPath("dealEndTime").description("The end time of product dealing"),
                         ),
                     ),
                 )

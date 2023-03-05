@@ -7,6 +7,7 @@ import com.waterfogsw.timedeal.product.domain.Product
 import io.kotest.core.annotation.DisplayName
 import io.kotest.core.spec.style.DescribeSpec
 import io.mockk.*
+import java.time.LocalDateTime
 import java.util.*
 
 @DisplayName("Service - 상품 등록 기능")
@@ -25,6 +26,9 @@ class ProductCreateServiceTest : DescribeSpec({
             quantity = 10,
             originalPrice = 1000000,
             sellingPrice = 1200000,
+            dealEndTime = LocalDateTime
+                .now()
+                .plusDays(1),
         )
 
         val product = Product(
@@ -34,6 +38,9 @@ class ProductCreateServiceTest : DescribeSpec({
             quantity = productCreateRequest.quantity,
             originalPrice = productCreateRequest.originalPrice,
             sellingPrice = productCreateRequest.sellingPrice,
+            dealEndTime = LocalDateTime
+                .now()
+                .plusDays(1),
         )
 
         it("상품을 등록한다") {

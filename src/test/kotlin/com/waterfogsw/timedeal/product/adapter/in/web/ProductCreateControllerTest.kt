@@ -21,6 +21,7 @@ import org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath
 import org.springframework.restdocs.payload.PayloadDocumentation.requestFields
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 import org.springframework.web.context.WebApplicationContext
+import java.time.LocalDateTime
 import java.util.*
 
 @DisplayName("WEB - 상품 등록 API")
@@ -52,6 +53,9 @@ class ProductCreateControllerTest(
                 quantity = 10,
                 originalPrice = 1000000,
                 sellingPrice = 1200000,
+                dealEndTime = LocalDateTime
+                    .now()
+                    .plusDays(1),
             )
 
             every { productCreateCommand.create(productCreateRequest) } just runs
@@ -75,6 +79,7 @@ class ProductCreateControllerTest(
                                 fieldWithPath("quantity").description("The quantity of the product"),
                                 fieldWithPath("originalPrice").description("The original price of the product"),
                                 fieldWithPath("sellingPrice").description("The selling price of the product"),
+                                fieldWithPath("dealEndTime").description("The end time of product dealing"),
                             ),
                         ),
                     )
@@ -96,6 +101,9 @@ class ProductCreateControllerTest(
                 quantity = 10,
                 originalPrice = 1000000,
                 sellingPrice = 1200000,
+                dealEndTime = LocalDateTime
+                    .now()
+                    .plusDays(1),
             )
 
             it("401 응답을 반환한다") {

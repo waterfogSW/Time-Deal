@@ -16,6 +16,7 @@ class ProductDTOMapper {
             quantity = productCreateRequest.quantity,
             originalPrice = productCreateRequest.originalPrice,
             sellingPrice = productCreateRequest.sellingPrice,
+            dealEndTime = productCreateRequest.dealEndTime,
         )
 
     fun mapToDetailResponse(product: Product) =
@@ -29,5 +30,6 @@ class ProductDTOMapper {
             sellingPrice = product.sellingPrice,
             createdAt = product.createdAt!!,
             updatedAt = product.updatedAt!!,
+            dealEndTime = product.dealEndTime,
         )
 }

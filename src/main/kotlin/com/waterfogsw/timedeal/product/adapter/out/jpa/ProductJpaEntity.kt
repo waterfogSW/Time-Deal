@@ -3,6 +3,7 @@ package com.waterfogsw.timedeal.product.adapter.out.jpa
 import com.waterfogsw.timedeal.common.entity.DefaultJpaEntity
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
+import java.time.LocalDateTime
 
 @Entity(name = "product")
 class ProductJpaEntity(
@@ -13,6 +14,7 @@ class ProductJpaEntity(
     quantity: Long,
     originalPrice: Long,
     sellingPrice: Long,
+    dealEndTime: LocalDateTime,
 ) : DefaultJpaEntity(id) {
 
     @Column(nullable = false)
@@ -37,5 +39,9 @@ class ProductJpaEntity(
 
     @Column(nullable = false)
     var sellingPrice: Long = sellingPrice
+        private set
+
+    @Column(nullable = false)
+    var dealEndTime: LocalDateTime = dealEndTime
         private set
 }

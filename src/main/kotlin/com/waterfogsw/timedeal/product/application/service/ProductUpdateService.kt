@@ -26,6 +26,7 @@ class ProductUpdateService(
             quantity = productUpdateRequest.quantity,
             originalPrice = productUpdateRequest.originalPrice,
             sellingPrice = productUpdateRequest.sellingPrice,
+            dealEndTime = productUpdateRequest.dealEndTime,
         )
 
         productSavePort.save(updatedProduct)

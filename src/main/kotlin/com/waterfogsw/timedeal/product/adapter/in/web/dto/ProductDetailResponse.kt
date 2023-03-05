@@ -12,4 +12,5 @@ data class ProductDetailResponse(
     val sellingPrice: Long,
     val createdAt: LocalDateTime,
     val updatedAt: LocalDateTime,
+    val dealEndTime: LocalDateTime,
 )

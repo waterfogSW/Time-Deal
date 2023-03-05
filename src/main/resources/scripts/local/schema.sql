@@ -6,6 +6,7 @@ create table time_deal.product
         primary key,
     created_at     datetime(6)  not null,
     updated_at     datetime(6)  not null,
+    deal_end_time  datetime(6)  not null,
     description    varchar(255) not null,
     image_url      varchar(255) not null,
     name           varchar(255) not null,

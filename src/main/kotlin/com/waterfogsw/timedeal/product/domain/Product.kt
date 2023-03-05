@@ -10,9 +10,13 @@ data class Product(
     val quantity: Long,
     val originalPrice: Long,
     val sellingPrice: Long,
+    val dealEndTime: LocalDateTime,
     val createdAt: LocalDateTime? = null,
     val updatedAt: LocalDateTime? = null,
 ) {
+    init {
+        require(LocalDateTime.now() < dealEndTime) { "The end time of the deal must be later than the current time." }
+    }
 
     fun update(
         name: String = this.name,
@@ -21,6 +25,7 @@ data class Product(
         quantity: Long = this.quantity,
         originalPrice: Long = this.originalPrice,
         sellingPrice: Long = this.sellingPrice,
+        dealEndTime: LocalDateTime = this.dealEndTime,
     ) = this.copy(
         name = name,
         description = description,
@@ -29,5 +34,6 @@ data class Product(
         originalPrice = originalPrice,
         sellingPrice = sellingPrice,
         updatedAt = LocalDateTime.now(),
+        dealEndTime = dealEndTime,
     )
 }

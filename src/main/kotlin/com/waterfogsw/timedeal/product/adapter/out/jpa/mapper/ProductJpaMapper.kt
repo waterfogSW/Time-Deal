@@ -16,6 +16,7 @@ class ProductJpaMapper {
             quantity = product.quantity,
             originalPrice = product.originalPrice,
             sellingPrice = product.sellingPrice,
+            dealEndTime = product.dealEndTime,
         )
 
     fun mapToDomain(productJpaEntity: ProductJpaEntity) =
@@ -29,5 +30,6 @@ class ProductJpaMapper {
             sellingPrice = productJpaEntity.sellingPrice,
             createdAt = productJpaEntity.createdAt,
             updatedAt = productJpaEntity.updatedAt,
+            dealEndTime = productJpaEntity.dealEndTime,
         )
 }

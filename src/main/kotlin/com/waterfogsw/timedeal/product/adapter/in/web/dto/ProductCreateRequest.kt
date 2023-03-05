@@ -1,5 +1,7 @@
 package com.waterfogsw.timedeal.product.adapter.`in`.web.dto
 
+import java.time.LocalDateTime
+
 data class ProductCreateRequest(
     val name: String,
     val description: String,
@@ -7,4 +9,5 @@ data class ProductCreateRequest(
     val quantity: Long,
     val originalPrice: Long,
     val sellingPrice: Long,
+    val dealEndTime: LocalDateTime,
 )
