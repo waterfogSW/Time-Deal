@@ -7,7 +7,7 @@ interface ProductLookupPort {
     fun findById(id: Long): Product
 
     fun findBySlice(
-        id: Long,
+        id: Long?,
         size: Long,
     ): List<Product>
 }

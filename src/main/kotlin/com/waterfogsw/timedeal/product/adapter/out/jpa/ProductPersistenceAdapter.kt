@@ -34,7 +34,7 @@ class ProductPersistenceAdapter(
     }
 
     override fun findBySlice(
-        id: Long,
+        id: Long?,
         size: Long,
     ): List<Product> {
         return productJpaRepository

@@ -37,23 +37,11 @@ class ProductListControllerTest(
     afterEach { restDocumentation.afterTest() }
 
     describe("GET /api/products") {
-        val id = 1L
+        val id = 2L
         val size = 10L
         val productListRequest = ProductListRequest(id, size)
 
         val productInfoList = listOf(
-            ProductListResponse.ProductInfo(
-                id = 1L,
-                name = "iPhone 13",
-                description = "A new iPhone model from Apple",
-                imageUrl = "https://example.com/image.jpg",
-                quantity = 10L,
-                originalPrice = 1000000L,
-                sellingPrice = 1200000L,
-                dealEndTime = LocalDateTime
-                    .now()
-                    .plusDays(1L),
-            ),
             ProductListResponse.ProductInfo(
                 id = 2L,
                 name = "Galaxy S21",
@@ -65,6 +53,18 @@ class ProductListControllerTest(
                 dealEndTime = LocalDateTime
                     .now()
                     .plusDays(2L),
+            ),
+            ProductListResponse.ProductInfo(
+                id = 1L,
+                name = "iPhone 13",
+                description = "A new iPhone model from Apple",
+                imageUrl = "https://example.com/image.jpg",
+                quantity = 10L,
+                originalPrice = 1000000L,
+                sellingPrice = 1200000L,
+                dealEndTime = LocalDateTime
+                    .now()
+                    .plusDays(1L),
             ),
         )
 
@@ -85,7 +85,9 @@ class ProductListControllerTest(
                     document(
                         "list-products",
                         queryParameters(
-                            parameterWithName("id").description("The id of the product to start with"),
+                            parameterWithName("id")
+                                .description("The id of the product to start with")
+                                .optional(),
                             parameterWithName("size")
                                 .description("The number of products to return (default 10)")
                                 .optional(),
