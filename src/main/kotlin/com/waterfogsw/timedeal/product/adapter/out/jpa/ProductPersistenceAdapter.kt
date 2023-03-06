@@ -12,6 +12,7 @@ import com.waterfogsw.timedeal.product.domain.Product
 class ProductPersistenceAdapter(
     private val productJpaMapper: ProductJpaMapper,
     private val productJpaRepository: ProductJpaRepository,
+    private val productQueryDSLRepository: ProductQueryDSLRepository,
 ) : ProductSavePort,
     ProductDeletePort,
     ProductLookupPort {
@@ -37,7 +38,7 @@ class ProductPersistenceAdapter(
         id: Long?,
         size: Long,
     ): List<Product> {
-        return productJpaRepository
+        return productQueryDSLRepository
             .findBySlice(id, size)
             .map { productJpaMapper.mapToDomain(it) }
     }
