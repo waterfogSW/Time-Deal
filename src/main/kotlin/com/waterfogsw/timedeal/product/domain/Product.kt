@@ -7,7 +7,7 @@ data class Product(
     val name: String,
     val description: String,
     val imageUrl: String,
-    val quantity: Long,
+    var quantity: Long,
     val originalPrice: Long,
     val sellingPrice: Long,
     val dealEndTime: LocalDateTime,
@@ -16,6 +16,11 @@ data class Product(
 ) {
     init {
         require(LocalDateTime.now() < dealEndTime) { "The end time of the deal must be later than the current time." }
+    }
+
+    fun decrease() {
+        require(this.quantity > 0) { "The product is out of stock" }
+        this.quantity -= 1
     }
 
     fun update(

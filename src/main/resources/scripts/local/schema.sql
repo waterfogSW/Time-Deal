@@ -1,4 +1,4 @@
-drop table if exists time_deal.product, time_deal.user;
+drop table if exists time_deal.product, time_deal.user, time_deal.`order`;
 
 create table time_deal.product
 (
@@ -26,4 +26,18 @@ create table time_deal.user
     username   varchar(255) not null,
     constraint UK_sb8bbouer5wak8vyiiy4pf2bx
         unique (username)
+);
+
+create table time_deal.`order`
+(
+    id         bigint auto_increment
+        primary key,
+    created_at datetime(6) not null,
+    updated_at datetime(6) not null,
+    product_id bigint      null,
+    user_id    bigint      null,
+    constraint FK5ds52cnxjw9c99ovccne0axk0
+        foreign key (user_id) references time_deal.user (id),
+    constraint FKknjaoi59nxmpxhr452bj95tgg
+        foreign key (product_id) references time_deal.product (id)
 );
